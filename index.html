@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="styles/style.css"/>
+  
+  
+ 
+  <style>
+  
+  </style>
+  
+  <script>
+  
+  let itens = [];
+let total = 0;
+
+function addItem(nome, preco) {
+  itens.push(`${nome} - R$ ${preco}`);
+  total += preco;
+
+  document.getElementById("pedido").innerText =
+    "Pedido:\n" + itens.join(", ");
+
+  document.getElementById("total").innerText =
+    "Total: R$ " + total;
+}
+
+
+function finalizar() {
+  const nome = document.getElementById("nome").value;
+  const mesa = document.getElementById("mesa").value;
+
+  if (!nome || !mesa || itens.length === 0) {
+    alert("Preencha nome, mesa e adicione itens.");
+    return;
+  }
+
+  let mensagem =
+`🍽️ Pedido
+👤 Nome: ${nome}
+🪑 Mesa: ${mesa}
+
+📋 Itens:
+${itens.join("\n")}
+
+💰 Total: R$ ${total}`;
+
+  const numero = "+5522999999999"; // WhatsApp do restaurante
+  const link =
+    "https://wa.me/" + numero +
+    "?text=" + encodeURIComponent(mensagem);
+
+  window.open(link, "_blank");
+}
+
+
+  
+  </script>
+  
+  <title>Bob's Burgers</title>
+</head>
+<body>
+  
+  <nav>
+  <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
+       <button onclick class="deliveryb"> <a href="" class="delivery">Monte seu pedido</a>
+            <button onclick class="deliveryb"> <a href="mailto:blabla0101@gmail.com" _blank class="delivery">Contato</a>
+  </nav>
+  
+  
+  <header class="logo">
+          <img src="https://logodownload.org/wp-content/uploads/2019/11/bobs-logo-0.png" style="width: 250px; height: 250px; margin-bottom: 5px";>
+  </header>
+  
+  <input type="text" id="nome" placeholder="Nome do cliente">
+<input type="number" id="mesa" placeholder="Mesa">
+
+  <div class="total">
+<p id="pedido">Pedido: (vazio)</p>
+<p id="total">Total: R$ 0</p>
+  </div>
+  
+  <div class="menu">
+  <button class="comida" onclick="addItem('🍕 Pizza', 35)">🍕 Pizza</button>
+<button class="comida" onclick="addItem('🍔 Burger', 25)">🍔 Burger</button>
+<button class="comida" onclick="addItem('🥤 Refri', 8)">🥤 Refri</button>
+  </div>
+  
+
+  <button class="whatsapp" onclick="finalizar()"> <i class="fab fa-whatsapp"></i>Enviar para WhatsApp</button>
+    
+  <br>
+  
+  <br>
+  
+  <br>
+  
+  <footer>site criado por Johnny Hoff</footer>
+</body>
+</html>

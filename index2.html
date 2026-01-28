@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Delivery Interativo</title>
+    <link rel="stylesheet" href="style.css">
+    
+    
+    <script>
+    // Garante que o código só rode após o HTML carregar completamente
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const inputsQtd = document.querySelectorAll('.qtd');
+    const totalDisplay = document.getElementById('valor-total');
+    const btnEnviar = document.getElementById('btn-enviar');
+
+    // Função que percorre os itens e soma os valores
+    function atualizarTotal() {
+        let total = 0;
+        const itens = document.querySelectorAll('.item');
+
+        itens.forEach(item => {
+            const preco = parseFloat(item.getAttribute('data-preco'));
+            const qtd = parseInt(item.querySelector('.qtd').value) || 0;
+            total += preco * qtd;
+        });
+
+        // Atualiza o texto na tela com 2 casas decimais
+        totalDisplay.innerText = total.toFixed(2).replace('.', ',');
+    }
+
+    // Adiciona o evento de escuta em cada campo de quantidade
+    // Usamos 'input' e 'change' para garantir que funcione em teclados e setas
+    inputsQtd.forEach(input => {
+        input.addEventListener('input', atualizarTotal);
+        input.addEventListener('change', atualizarTotal);
+    });
+
+    // Função de envio (mantida conforme anterior)
+    btnEnviar.addEventListener('click', () => {
+        const nome = document.getElementById('nome').value;
+        const endereco = document.getElementById('endereco').value;
+        const pagamento = document.getElementById('pagamento').value;
+        const totalFinal = totalDisplay.innerText;
+
+        if (!nome || !endereco || totalFinal === "0,00") {
+            alert("Por favor, preencha os dados e adicione itens ao carrinho!");
+            return;
+        }
+
+        let listaItens = "";
+        document.querySelectorAll('.item').forEach(item => {
+            const qtd = item.querySelector('.qtd').value;
+            if (qtd > 0) {
+                const nomeItem = item.getAttribute('data-nome');
+                listaItens += `• ${nomeItem}: ${qtd}x\n`;
+            }
+        });
+
+        const textoMensagem = `*NOVO PEDIDO* 🚀\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}\n--------------------------\n${listaItens}--------------------------\n*Total:* R$ ${totalFinal}\n*Pagamento:* ${pagamento}`;
+        
+        const meuWhatsapp = "+5522997622258"; 
+        window.open(`https://wa.me/${meuWhatsapp}?text=${encodeURIComponent(textoMensagem)}`, '_blank');
+    });
+});
+
+    </script>
+    
+    
+    <style>
+    /* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f8f9fa; 
+    padding: 20px; 
+}
+
+.container { 
+    max-width: 450px; 
+    background: white; 
+    padding: 25px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    margin: auto; 
+}
+
+h2 { color: #333; margin-bottom: 10px; }
+
+.item { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid #eee; 
+    padding: 15px 0; 
+}
+
+.item input { 
+    width: 60px; 
+    padding: 5px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+}
+
+.total-section { 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    margin: 20px 0; 
+    color: #2d3436; 
+    text-align: right;
+}
+
+#valor-total { color: #d63031; }
+
+form input, form select { 
+    width: 100%; 
+    padding: 12px; 
+    margin: 8px 0 15px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+}
+
+button { 
+    width: 100%; 
+    padding: 15px; 
+    background: #25d366; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+button:hover { background: #128c7e; transform: translateY(-2px); }
+
+    </style>
+    
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>🍔 Cardápio Online</h2>
+        <p>Monte seu pedido abaixo:</p>
+    </header>
+    
+    <div id="cardapio">
+        <div class="item" data-nome="X-Burger" data-preco="25.00">
+            <span>X-Burger (R$ 25,00)</span>
+            <input type="number" min="0" value="0" class="qtd">
+        </div>
+        <div class="item" data-nome="Batata Frita" data-preco="15.00">
+            <span>Batata Frita (R$ 15,00)</span>
+            <input type="number" min="0" value="0" class="qtd">
+        </div>
+        <div class="item" data-nome="Refrigerante" data-preco="7.00">
+            <span>Refrigerante (R$ 7,00)</span>
+            <input type="number" min="0" value="0" class="qtd">
+        </div>
+    </div>
+
+    <div class="total-section">
+        Total: R$ <span id="valor-total">0.00</span>
+    </div>
+
+    <hr>
+
+    <form id="form-pedido">
+        <h3>Dados para Entrega</h3>
+        <input type="text" id="nome" placeholder="Seu Nome" required>
+        <input type="text" id="endereco" placeholder="Endereço Completo" required>
+        
+        <label for="pagamento">Forma de Pagamento:</label>
+        <select id="pagamento">
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão (Maquininha)</option>
+            <option value="Dinheiro">Dinheiro</option>
+        </select>
+        
+        <button type="button" id="btn-enviar">Enviar Pedido via WhatsApp</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
