@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles/style3.css"/>
+
+
+
+  <style>
+
+  </style>
+
+  <script>
+
+  let itens = [];
+let total = 0;
+
+function addItem(nome, preco) {
+  itens.push(`${nome} - R$ ${preco}`);
+  total += preco;
+
+  document.getElementById("pedido").innerText =
+    "Pedido:\n" + itens.join(", ");
+
+  document.getElementById("total").innerText =
+    "Total: R$ " + total;
+}
+
+
+function finalizar() {
+  const nome = document.getElementById("nome").value;
+  const mesa = document.getElementById("mesa").value;
+
+  if (!nome || !mesa || itens.length === 0) {
+    alert("Preencha nome, mesa e adicione itens.");
+    return;
+  }
+
+  let mensagem =
+`🍽️ Pedido
+👤 Nome: ${nome}
+🪑 Mesa: ${mesa}
+
+📋 Itens:
+${itens.join("\n")}
+
+💰 Total: R$ ${total}`;
+
+  const numero = "+5522999999999"; // WhatsApp do restaurante
+  const link =
+    "https://wa.me/" + numero +
+    "?text=" + encodeURIComponent(mensagem);
+
+  window.open(link, "_blank");
+}
+
+
+
+  </script>
+
+  <title>Monte Seu Pedido</title>
+</head>
+<body>
+
+  <nav>
+       <button onclick class="deliveryb"> <a href="index.html" class="delivery">Menu</a>
+               <button onclick class="deliveryb"> <a href="index3.html" class="delivery">Monte Seu Pedido</a>
+           <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
+            <button onclick class="deliveryb"> <a href="mailto:blabla0101@gmail.com" _blank class="delivery">Contato</a>
+  </nav>
+
+
+  <header class="logo">
+          <img src="https://brandlogos.net/wp-content/uploads/2025/04/bobs-logo_brandlogos.net_g2ugz-512x263.png" style="width: 500px; height: 280px; margin-bottom: 5px; margin-top: 3px;">
+  </header>
+
+  <main>
+
+  <input type="text" id="nome" placeholder="Nome do cliente">
+<input type="number" id="mesa" placeholder="Mesa">
+
+  <div class="total">
+<p id="pedido">Pedido: (vazio)</p>
+<p id="total">Total: R$ 0</p>
+  </div>
+
+  <div>
+
+  <div class="menu2" style="display: flex; align-self: center;">
+
+    <div style="display:grid; justify-self:center;">
+<button class="comida" onclick="addItem('🍔 Hamburguer comum', 5)">🍔 Hamburguer Comum</button>
+<button class="comida" onclick="addItem('🍔 Hamburguer Vegano', 6)">🍔 Hamburguer Vegano</button>
+</div>
+
+      <div style="display:grid; justify-self:center;">
+<button class="comida" onclick="addItem('🧀 Queijo', 0.5)">🧀 Queijo</button>
+<button class="comida" onclick="addItem('🥬 Alface', 0.5)">🥬 Alface</button>
+<button class="comida" onclick="addItem('🍅 Tomate', 0.5)">🍅 Tomate</button>
+<button class="comida" onclick="addItem('🧅 Cebola', 0.5)">🧅 Cebola</button>
+<button class="comida" onclick="addItem('🥒 Picles', 0.25)">🥒 Picles</button>
+<button class="comida" onclick="addItem('🥓 Bacon', 1)">🥓 Bacon</button>
+</div>
+
+ <div style="display:grid; justify-self:center;">
+<button class="comida" onclick="addItem('🍟 Fritas', 3)">🍟 Fritas</button>
+<button class="comida" onclick="addItem('🥨 Anéis De Cebola (100g)', 2)">🥨 Anéis De Cebola (100g)</button>
+<button class="comida" onclick="addItem('🧁 Cupcake', 6)">🧁 Cupcake</button>
+<button class="comida" onclick="addItem('🍩 Donut', 8)">🍩 Donut</button>
+</div>
+
+    <div style="display:grid; justify-self:center;">
+<button class="comida" onclick="addItem('🍦 Casquinha', 6)">🍦 Casquinha</button>
+<button class="comida" onclick="addItem('🥤​ Milkshake', 15)">🥤​ Milkshake</button>
+<button class="comida" onclick="addItem('🍧 Sundae', 18)">🍧 Sundae</button>
+<button class="comida" onclick="addItem('🍨 Big Cascão', 25)">🍨 Big Cascão</button>
+</div>
+
+
+<div style="display:grid; justify-self:center;">
+<button class="comida" onclick="addItem('☕ Café', 9)">☕ Café</button>
+<button class="comida" onclick="addItem('🍶 Água', 3)">🍶 Água</button>
+<button class="comida" onclick="addItem('🥤 Coca-Cola 500ml', 8)">🥤 Coca-Cola 500ml</button>
+<button class="comida" onclick="addItem('🥤 Coca-Cola 1L', 10)">🥤 Coca-Cola 1L</button>
+<button class="comida" onclick="addItem('🥤 Cola-Cola 2L', 12)">🥤 Coca-Cola 2L</button>
+</div>
+
+</div>
+
+
+
+   <div style="display:flex; justify-self:center;">
+  <button class="whatsapp" onclick="finalizar()"> <i class="fab fa-whatsapp"></i>Enviar para WhatsApp</button>
+   </div>
+
+
+ </main>
+ 
+  <br>
+
+  <br>
+
+  <br>
+
+  <footer>
+<img src="https://www.bobsemcasa.com.br/static/img/banner-os-classicos.png" style="justify-content: center; align-content:center;">
+
+<br>
+    site criado por Johnny Hoff
+  </footer>
+</body>
+</html>
