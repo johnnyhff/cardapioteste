@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles/style.css"/>
+
+
+
+  <style>
+
+    @media only screen and (max-width: 767px) {
+  /* Estilos para mobile */
+}
+
+/* Telas médias */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Estilos para tablets */
+}
+
+/* Telas grandes */
+@media only screen and (min-width: 992px) {
+  /* Estilos para desktops */
+}
+
+  </style>
+
+  <script>
+
+  let itens = [];
+let total = 0;
+
+function addItem(nome, preco) {
+  itens.push(`${nome} - R$ ${preco}`);
+  total += preco;
+
+  document.getElementById("pedido").innerText =
+    "Pedido:\n" + itens.join(", ");
+
+  document.getElementById("total").innerText =
+    "Total: R$ " + total;
+}
+
+
+function finalizar() {
+  const nome = document.getElementById("nome").value;
+  const mesa = document.getElementById("mesa").value;
+
+  if (!nome || !mesa || itens.length === 0) {
+    alert("Preencha nome, mesa e adicione itens.");
+    return;
+  }
+
+  let mensagem =
+`🍽️ Pedido
+👤 Nome: ${nome}
+🪑 Mesa: ${mesa}
+
+📋 Itens:
+${itens.join("\n")}
+
+💰 Total: R$ ${total}`;
+
+  const numero = "+5522999999999"; // WhatsApp do restaurante
+  const link =
+    "https://wa.me/" + numero +
+    "?text=" + encodeURIComponent(mensagem);
+
+  window.open(link, "_blank");
+}
+
+
+
+  </script>
+
+  <title>Menu</title>
+</head>
+<body>
+
+  <nav>
+       <button onclick class="deliveryb"> <a href="index.html" class="delivery">Menu</a>
+               <button onclick class="deliveryb"> <a href="index3.html" class="delivery">Monte Seu Pedido</a>
+           <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
+            <button onclick class="deliveryb"> <a href="mailto:blabla0101@gmail.com" _blank class="delivery">Contato</a>
+  </nav>
+
+
+  <header class="logo">
+          <img src="https://brandlogos.net/wp-content/uploads/2025/04/bobs-logo_brandlogos.net_g2ugz-512x263.png" style="width: 500px; height: 280px; margin-bottom: 5px; margin-top: 3px;">
+  </header>
+
+  <main>
+
+  <input type="text" id="nome" placeholder="Nome do cliente">
+<input type="number" id="mesa" placeholder="Mesa">
+
+  <div class="total">
+<p id="pedido">Pedido: (vazio)</p>
+<p id="total">Total: R$ 0</p>
+  </div>
+
+  <div class="menu">
+
+    <div>
+<button class="comida" onclick="addItem('🍔 Bobs Burger', 25)">🍔 Bob's Burger</button>
+<button class="comida" onclick="addItem('🍔 Cheddar Australiano', 30)">🍔 Cheddar Australiano</button>
+<button class="comida" onclick="addItem('🍔 Big Bob', 35)">🍔 Big Bob</button>
+<button class="comida" onclick="addItem('🍔 Crispy Bacon', 40)">🍔 Crispy Bacon</button>]
+    </div>
+
+    <div>
+<button class="comida" onclick="addItem('🥤 Coca-Cola 500ml', 8)">🥤 Coca-Cola 500ml</button>
+<button class="comida" onclick="addItem('🥤 Coca-Cola 1L', 10)">🥤 Coca-Cola 1L</button>
+<button class="comida" onclick="addItem('🥤 Cola-Cola 2L', 12)">🥤 Coca-Cola 2L</button>
+  </div>
+
+    <div>
+<button class="comida" onclick="addItem('🍦 Casquinha', 6)">🍦 Casquinha</button>
+<button class="comida" onclick="addItem('🥤​ Milkshake', 8)">🥤​ Milkshake</button>
+<button class="comida" onclick="addItem('🍧 Sundae', 12)">🍧 Sundae</button>
+<button class="comida" onclick="addItem('🍨 Big Cascão', 15)">🍨 Big Cascão</button>
+</div>
+
+  </div>
+
+
+  <button class="whatsapp" onclick="finalizar()"> <i class="fab fa-whatsapp"></i>Enviar para WhatsApp</button>
+
+
+
+ </main>
+ 
+  <br>
+
+  <br>
+
+  <br>
+
+  <footer>
+<img src="https://www.bobsemcasa.com.br/static/img/banner-os-classicos.png" style="justify-content: center; align-content:center;">
+
+<br>
+    site criado por Johnny Hoff
+  </footer>
+</body>
+</html>
