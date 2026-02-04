@@ -11,6 +11,20 @@
 
   <style>
 
+    @media only screen and (max-width: 767px) {
+  /* Estilos para mobile */
+}
+
+/* Telas médias */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Estilos para tablets */
+}
+
+/* Telas grandes */
+@media only screen and (min-width: 992px) {
+  /* Estilos para desktops */
+}
+
   </style>
 
   <script>
@@ -61,13 +75,14 @@ ${itens.join("\n")}
 
   </script>
 
-  <title>Bob's Burgers</title>
+  <title>Menu</title>
 </head>
 <body>
 
   <nav>
-  <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
-       <button onclick class="deliveryb"> <a href="index.html" class="delivery">Monte seu pedido</a>
+       <button onclick class="deliveryb"> <a href="index.html" class="delivery">Menu</a>
+               <button onclick class="deliveryb"> <a href="index3.html" class="delivery">Monte Seu Pedido</a>
+           <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
             <button onclick class="deliveryb"> <a href="mailto:blabla0101@gmail.com" _blank class="delivery">Contato</a>
   </nav>
 
@@ -75,6 +90,8 @@ ${itens.join("\n")}
   <header class="logo">
           <img src="https://brandlogos.net/wp-content/uploads/2025/04/bobs-logo_brandlogos.net_g2ugz-512x263.png" style="width: 500px; height: 280px; margin-bottom: 5px; margin-top: 3px;">
   </header>
+
+  <main>
 
   <input type="text" id="nome" placeholder="Nome do cliente">
 <input type="number" id="mesa" placeholder="Mesa">
@@ -85,14 +102,29 @@ ${itens.join("\n")}
   </div>
 
   <div class="menu">
-  <button class="comida" onclick="addItem('🍕 Pizza', 35)">🍕 Pizza</button>
-<button class="comida" onclick="addItem('🍔 Burger', 25)">🍔 Burger</button>
-<button class="comida" onclick="addItem('🥤 Refri', 8)">🥤 Refri</button>
+
+<button class="comida" onclick="addItem('🍔 Bobs Burger', 25)">🍔 Bob's Burger</button>
+<button class="comida" onclick="addItem('🍔 Cheddar Australiano', 30)">🍔 Cheddar Australiano</button>
+<button class="comida" onclick="addItem('🍔 Big Bob', 35)">🍔 Big Bob</button>
+<button class="comida" onclick="addItem('🍔 Crispy Bacon', 40)">🍔 Crispy Bacon</button>
+
+<button class="comida" onclick="addItem('🥤 Coca-Cola 500ml', 8)">🥤 Coca-Cola 500ml</button>
+<button class="comida" onclick="addItem('🥤 Coca-Cola 1L', 10)">🥤 Coca-Cola 1L</button>
+<button class="comida" onclick="addItem('🥤 Cola-Cola 2L', 12)">🥤 Coca-Cola 2L</button>
   </div>
+
+<button class="comida" onclick="addItem('🍦 Casquinha', 6)">🍦 Casquinha</button>
+<button class="comida" onclick="addItem('🥤​ Milkshake', 8)">🥤​ Milkshake</button>
+<button class="comida" onclick="addItem('🍧 Sundae', 12)">🍧 Sundae</button>
+<button class="comida" onclick="addItem('🍨 Big Cascão', 15)">🍨 Big Cascão</button>
 
 
   <button class="whatsapp" onclick="finalizar()"> <i class="fab fa-whatsapp"></i>Enviar para WhatsApp</button>
 
+
+
+ </main>
+ 
   <br>
 
   <br>
