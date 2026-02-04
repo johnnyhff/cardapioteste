@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Delivery Interativo</title>
-    <link rel="stylesheet" href="style.css">
-    
-    
+    <title>Delivery</title>
+    <link rel="stylesheet" href="style2.css">
+
+
     <script>
     // Garante que o código só rode após o HTML carregar completamente
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const inputsQtd = document.querySelectorAll('.qtd');
     const totalDisplay = document.getElementById('valor-total');
     const btnEnviar = document.getElementById('btn-enviar');
@@ -59,23 +59,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const textoMensagem = `*NOVO PEDIDO* 🚀\n\n*Cliente:* ${nome}\n*Endereço:* ${endereco}\n--------------------------\n${listaItens}--------------------------\n*Total:* R$ ${totalFinal}\n*Pagamento:* ${pagamento}`;
-        
+
         const meuWhatsapp = "+5522997622258"; 
         window.open(`https://wa.me/${meuWhatsapp}?text=${encodeURIComponent(textoMensagem)}`, '_blank');
     });
 });
 
     </script>
-    
-    
+
+
     <style>
+
+        @media only screen and (max-width: 767px) {
+  /* Estilos para mobile */
+}
+
+/* Telas médias */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Estilos para tablets */
+}
+
+/* Telas grandes */
+@media only screen and (min-width: 992px) {
+  /* Estilos para desktops */
+}
+    
+ nav{
+  display: flex;
+  justify-content: space-around;
+  justify-self: center;
+  border-radius: 10px;
+  box-shadow: #2d3436;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 100%;
+  padding: none;
+  background-color: none;
+ }
+
+
+
+.delivery {
+ align-self: center;
+ justify-self: center;
+text-align: center;
+padding: none;
+margin: 5px;
+color: white;
+text-shadow: 10px black;
+font-family: Arial, Helvetica, sans-serif;
+background-color: none;
+text-decoration: none;
+
+ }
+
+.deliveryb {
+ display: flex;
+ align-self: center;
+ justify-self: center;
+ text-align: center;
+ margin: 5px;
+color: white;
+background-color: rgb(219, 10, 10);
+font-family: Arial, Helvetica, sans-serif;
+font: 100;
+padding: 5px;
+border-radius: 10px;
+text-decoration: none;
+ }
+
+
+
+
+
+    
     /* Reset básico */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: #f8f9fa; 
-    padding: 20px; 
+    font-family:Arial, Helvetica, sans-serif;
+    background-image: url("https://zebreus.github.io/all-gnome-backgrounds/images/Blobs-917462cdd3ca9813748e191c37171fd6e5041f12.webp");
 }
 
 .container { 
@@ -122,7 +185,7 @@ form input, form select {
     border-radius: 8px; 
 }
 
-button { 
+.whatsapp { 
     width: 100%; 
     padding: 15px; 
     background: #25d366; 
@@ -135,19 +198,26 @@ button {
     transition: 0.3s;
 }
 
-button:hover { background: #128c7e; transform: translateY(-2px); }
+.whatsapp:hover { background: #128c7e; transform: translateY(-2px); }
 
     </style>
-    
+
 </head>
 <body>
+    
+  <nav class="delivery">
+  <button onclick class="deliveryb"> <a href="index2.html" class="delivery">Delivery!</a>
+       <button onclick class="deliveryb"> <a href="index.html" class="delivery">Menu</a>
+         <button onclick class="deliveryb"> <a href="index3.html" class="delivery">Monte Seu Pedido</a>
+            <button onclick class="deliveryb"> <a href="mailto:blabla0101@gmail.com" _blank class="delivery">Contato</a>
+    </nav>
 
 <div class="container">
     <header>
         <h2>🍔 Cardápio Online</h2>
         <p>Monte seu pedido abaixo:</p>
     </header>
-    
+
     <div id="cardapio">
         <div class="item" data-nome="X-Burger" data-preco="25.00">
             <span>X-Burger (R$ 25,00)</span>
@@ -173,15 +243,15 @@ button:hover { background: #128c7e; transform: translateY(-2px); }
         <h3>Dados para Entrega</h3>
         <input type="text" id="nome" placeholder="Seu Nome" required>
         <input type="text" id="endereco" placeholder="Endereço Completo" required>
-        
+
         <label for="pagamento">Forma de Pagamento:</label>
         <select id="pagamento">
             <option value="Pix">Pix</option>
             <option value="Cartão">Cartão (Maquininha)</option>
             <option value="Dinheiro">Dinheiro</option>
         </select>
-        
-        <button type="button" id="btn-enviar">Enviar Pedido via WhatsApp</button>
+
+        <button type="button" class="whatsapp" id="btn-enviar">Enviar Pedido via WhatsApp</button>
     </form>
 </div>
 
